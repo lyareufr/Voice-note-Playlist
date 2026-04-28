@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Playlist for You</title>
+  <link rel="stylesheet" href="design.css">
+</head>
+<body>
+
+<div id="app-container">
+
+  <!-- Hero Banner -->
+  <div id="placeholder-hero">
+    [ IMAGE / LOGO PLACEHOLDER ]
+  </div>
+
+  <!-- App Header -->
+  <header id="app-header">
+    <span id="app-title">A playlist for you</span>
+    <span id="app-subtitle">In case your mind is too loud, here's mine:</span>
+  </header>
+
+  <!-- File List -->
+  <section id="list-container">
+    <div id="list-header">
+      <span class="section-label">Voice Notes</span>
+      <span id="file-count">0 files</span>
+    </div>
+
+    <div id="empty-state"></div>
+    <ul id="note-list" role="listbox" aria-label="Voice note files"></ul>
+
+    <div style="padding:10px 16px; border-top:1px solid var(--color-border); display:none;">
+      <input type="file" id="file-input" accept=".wav,.m4a,.mp3,.aac,.flac,audio/wav,audio/x-wav,audio/mp4,audio/mpeg,audio/x-aiff" multiple style="display:none;" />
+    </div>
+  </section>
+
+  <!-- Audio Player -->
+  <section id="player-section">
+    <div id="player-header">
+      <div id="player-artwork">art</div>
+      <div id="player-meta">
+        <div id="now-playing-label">Now Playing</div>
+        <div id="now-playing-name">
+          <span id="now-playing-empty" style="color:var(--color-text-muted);font-size:12px;">
+            — select a note —
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div id="progress-area">
+      <div id="progress-track" role="slider" aria-label="Playback position"
+           aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div id="progress-fill"></div>
+      </div>
+    </div>
+
+    <div id="time-row">
+      <span id="time-current">0:00</span>
+      <span id="time-total">0:00</span>
+    </div>
+
+    <div id="controls-row">
+      <button class="ctrl-btn" id="btn-rewind"     disabled title="Rewind 5s">« 5s</button>
+      <button class="ctrl-btn" id="btn-play-pause" disabled title="Play / Pause">Play</button>
+      <button class="ctrl-btn" id="btn-forward"    disabled title="Forward 5s">5s »</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="placeholder-footer">
+    Enjoy, My Love ❤️
+  </div>
+
+</div>
+
+<audio id="audio-engine" preload="auto"></audio>
+<script src="display.js"></script>
+</body>
+</html>
