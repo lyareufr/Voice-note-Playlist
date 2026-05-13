@@ -6,20 +6,23 @@
      1. CONFIG
      ---------------------------------------------------------- */
 const WAV_FILES = [
-  {name: 'Track 1', path: 'C:\\Users\\lyare\\Downloads\\(No subject) (1)\\Rec1.m4a' },
-  {name: 'Track 2', path: 'C:\\Users\\lyare\\Downloads\\(No subject) (1)\\Rec2.m4a' },
-  {name: 'Track 3', path: 'C:\\Users\\lyare\\Downloads\\(No subject) (1)\\Rec3.m4a' },
-  {name: 'Track 4', path: 'C:\\Users\\lyare\\Downloads\\(No subject) (1)\\Rec4.m4a' },
-  {name: 'Track 5', path: 'C:\\Users\\lyare\\Downloads\\(No subject) (1)\\Rec5.m4a' },
-  {name: 'Track 6', path: 'C:\\Users\\lyare\\Downloads\\(No subject) (1)\\Rec6.m4a' },
-  {name: 'Track 7', path: 'C:\\Users\\lyare\\Downloads\\(No subject) (1)\\Rec7.m4a' },
-  {name: 'Track 8', path: 'C:\\Users\\lyare\\Downloads\\(No subject) (1)\\Rec8.m4a' },
-  {name: 'Track 9', path: 'C:\\Users\\lyare\\Downloads\\(No subject) (1)\\Rec9.m4a' },
-  {name: 'Track 10', path: 'C:\\Users\\lyare\\Downloads\\(No subject) (1)\\Rec10.m4a' },
-  {name: 'Track 11', path: 'C:\\Users\\lyare\\Downloads\\(No subject) (1)\\Rec11.m4a' },
-  {name: 'Track 12', path: 'C:\\Users\\lyare\\Downloads\\(No subject) (1)\\Rec12.m4a' },
-  {name: 'Track 13', path: 'C:\\Users\\lyare\\Downloads\\(No subject) (1)\\Rec13.m4a' },
-  {name: 'Track 14', path: 'C:\\Users\\lyare\\Downloads\\(No subject) (1)\\Rec14.m4a' },
+  {name: 'Intro', path: './(No subject) (1)/Rec1.m4a' },
+  {name: 'Track 2', path: './(No subject) (1)/Rec2.m4a' },
+  {name: 'Track 3', path: './(No subject) (1)/Rec3.m4a' },
+  {name: 'Track 4', path: './(No subject) (1)/Rec4.m4a' },
+  {name: 'Track 5', path: './(No subject) (1)/Rec5.m4a' },
+  {name: 'Track 6', path: './(No subject) (1)/Rec6.m4a' },
+  {name: 'Track 7', path: './(No subject) (1)/Rec7.m4a' },
+  {name: 'Track 8', path: './(No subject) (1)/Rec8.m4a' },
+  {name: 'Track 9', path: './(No subject) (1)/Rec9.m4a' },
+  {name: 'Track 10', path: './(No subject) (1)/Rec10.m4a' },
+  {name: 'Track 11', path: './(No subject) (1)/Rec11.m4a' },
+  {name: 'Track 12', path: './(No subject) (1)/Rec12.m4a' },
+  {name: 'Track 13', path: './(No subject) (1)/Rec13.m4a' },
+  {name: 'Track 14', path: './(No subject) (1)/Rec14.m4a' },
+  {name: 'Track 15', path: './(No subject) (1)/Track 15.m4a' },
+  {name: 'Track 16', path: './(No subject) (1)/Track 16.m4a' },
+  {name: 'Track 17', path: './(No subject) (1)/Track 17.m4a' },
 ];
 
 /* ----------------------------------------------------------
@@ -179,7 +182,8 @@ function updateControls() {
   btnPlayPause.disabled = !hasNote;
   btnRewind.disabled    = !hasNote;
   btnForward.disabled   = !hasNote;
-  btnPlayPause.textContent = state.isPlaying ? 'Pause' : 'Play';
+  btnPlayPause.textContent = state.isPlaying ? '❚❚' : '▶';
+  
 }
 
 function updateProgress() {

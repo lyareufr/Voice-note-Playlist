@@ -4,16 +4,16 @@
 
 /* ── DESIGN TOKENS ─────────────────────────────────────────── */
 :root {
-  --color-bg:           #efead4;
-  --color-surface:      #ffffff;
-  --color-border:       #ddd9d0;
+  --color-bg:           #e0ebff;
+  --color-surface:      #e7e8e2fe;
+  --color-border:       #5c728f;
   --color-text-primary: #1a1917;
   --color-text-muted:   #8a8680;
   --color-accent:       #554e41;
   --color-accent-soft:  #eceae4;
   --color-placeholder:  #e8e5de;
-  --color-waveform:     #c8c4bb;
-  --color-progress:     #3b285e;
+  --color-waveform:     #e1dfdc;
+  --color-progress:     #303442;
 
   --font-ui:    'DM Mono', 'Garamond', serif;
   --font-label: 'DM Mono', 'Quicksand', serif;
@@ -40,27 +40,36 @@ body {
 
 /* ── SECTION LABEL UTILITY ──────────────────────────────────── */
 .section-label {
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-text-muted);
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   user-select: none;
 }
 
 /* MAIN CONTAINER */
 #app-container {
   width: 100%;
-  max-width: var(--max-w);
-  display: flex;
-  flex-direction: column;
-  gap: calc(var(--gap) * 1.5);
+  max-width: 900px;       
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto 1fr auto;
+  gap: var(--gap);
+  align-items: start;
+}
+/* HERO BANNER */
+#placeholder-hero,
+#app-header,
+#placeholder-footer {
+  grid-column: 1 / -1;    /* full width across both columns */
 }
 
-/* HERO BANNER */
+#list-container  { grid-column: 1; }
+#player-section  { grid-column: 2; grid-row: 3; }
 #placeholder-hero {
   width: 100%;
-  height: 120px;
+  height: 100px;
   background: var(--color-placeholder);
   border: 1px dashed var(--color-border);
   border-radius: var(--radius);
@@ -109,14 +118,14 @@ body {
   justify-content: space-between;
 }
 #file-count {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--color-text-muted);
   letter-spacing: 0.06em;
 }
 
 #note-list {
   list-style: none;
-  max-height: 300px;
+  max-height: 330px;
   overflow-y: auto;
 }
 #note-list::-webkit-scrollbar { width: 4px; }
@@ -161,7 +170,7 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 12px;
+  font-size: 14px;
 }
 .note-duration {
   font-size: 10px;
@@ -185,32 +194,23 @@ body {
   overflow: hidden;
 }
 #player-header {
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--color-border);
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;   /* stack artwork above the meta */
+  align-items: stretch;
+  padding: 0;
+  gap: 0;
 }
 
 #player-artwork {
-  width: 48px;
-  height: 48px;
-  background: var(--color-placeholder);
-  border: 1px dashed var(--color-border);
-  border-radius: 2px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 8px;
-  color: var(--color-text-muted);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  width: 100%;
+  aspect-ratio: 1 / 1;     /* square, fills the column width */
+  height: auto;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
 }
 
 #player-meta {
-  flex: 1;
-  overflow: hidden;
+  padding: 12px 16px;
 }
 #now-playing-label {
   font-size: 10px;
@@ -220,8 +220,8 @@ body {
   margin-bottom: 3px;
 }
 #now-playing-name {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 520;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -247,6 +247,7 @@ body {
   height: 100%;
   width: 0%;
   background: var(--color-progress);
+   background: linear-gradient(to right, #303442, #847d75);
   border-radius: 3px;
   transition: width 0.1s linear;
   pointer-events: none;
@@ -316,4 +317,101 @@ body {
   background: var(--color-placeholder);
   border: 1px dashed var(--color-border);
   border-radius: var(--radius);
+}
+
+/* ============================================================
+     MOBILE RESPONSIVE
+     ============================================================ */
+@media (max-width: 600px) {
+  :root {
+    --max-w:    100%;
+    --gap:      12px;
+  }
+
+  body {
+    padding: 20px 12px 40px;
+  }
+#app-container {
+    grid-template-columns: 1fr;
+  }
+   #list-container,
+  #player-section {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  #app-title {
+    font-size: 24px;
+  }
+
+  #app-subtitle {
+    font-size: 12px;
+  }
+
+  #placeholder-hero {
+    height: 80px;
+    font-size: 8px;
+  }
+
+  #file-count {
+    font-size: 12px;
+  }
+
+  .note-item {
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .note-name {
+    font-size: 11px;
+  }
+
+  .note-index,
+  .note-duration {
+    font-size: 9px;
+  }
+
+  #player-header {
+    padding: 10px 12px;
+  }
+
+  #player-artwork {
+    width: 40px;
+    height: 40px;
+  }
+
+  #now-playing-label {
+    font-size: 8px;
+  }
+
+  #now-playing-name {
+    font-size: 12px;
+  }
+
+  #progress-area {
+    padding: 8px 12px 4px;
+  }
+
+  #time-row {
+    padding: 4px 12px 0;
+    font-size: 9px;
+  }
+
+  #controls-row {
+    padding: 12px 12px 14px;
+    gap: 8px;
+  }
+
+  .ctrl-btn {
+    padding: 6px 12px;
+    font-size: 9px;
+  }
+
+  #btn-play-pause {
+    min-width: 60px;
+  }
+
+  #placeholder-footer {
+    height: 40px;
+    font-size: 8px;
+  }
 }
